@@ -14,7 +14,7 @@
 <meta property="og:description" content="在本地 git clone 时出现报错： 123git clone https:&#x2F;&#x2F;github.com&#x2F;probberechts&#x2F;hexo-theme-cactus.git themes&#x2F;cactusCloning into &#x27;themes&#x2F;cactus&#x27;...fatal: unable to access &#x27;https:&#x2F;&#x2F;github.com&#x2F;probberec">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-12-11T17:23:19.000Z">
-<meta property="article:modified_time" content="2023-12-11T17:34:37.415Z">
+<meta property="article:modified_time" content="2023-12-11T17:44:46.073Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Tools">
 <meta name="twitter:card" content="summary">
@@ -157,10 +157,16 @@
     <p>在本地 <code>git clone</code> 时出现报错：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/probberechts/hexo-theme-cactus.git themes/cactus</span><br><span class="line">Cloning into &#x27;themes/cactus&#x27;...</span><br><span class="line">fatal: unable to access &#x27;https://github.com/probberechts/hexo-theme-cactus.git/&#x27;: Failed to connect to github.com port 443 after 21085 ms: Timed out</span><br></pre></td></tr></table></figure>
 
-<p>经过调试，在我的电脑上需要进行这样的设置：</p>
+<p>经过调试，在我的电脑上需要进行这样的设置：（太麻烦了）</p>
 <ol>
-<li>VPN设置为 <code>自动配置系统代理</code> 和 <code>全局模式</code></li>
-<li>电脑 <code>设置</code> &#x3D;&gt; <code>网络与Internet</code> &#x3D;&gt; <code>代理</code> , 打开 <code>自动检测设置</code> 和 <code>使用代理服务器</code></li>
+<li><p>cmd 输入：</p>
+<p> <code>git config --global --unset http.proxy</code></p>
+<p><code>git config --global --unset https.proxy</code></p>
+</li>
+<li><p>VPN设置为 <code>自动配置系统代理</code> 和 <code>全局模式</code></p>
+</li>
+<li><p>电脑 <code>设置</code> &#x3D;&gt; <code>网络与Internet</code> &#x3D;&gt; <code>代理</code> , 打开 <code>自动检测设置</code> 和 <code>使用代理服务器</code></p>
+</li>
 </ol>
 <p>具体原因没有深究，应该是本地代理地址和VPN代理地址之间出现的一些矛盾，我的想法是完全设置为VPN代理来解决（玄学）。</p>
 
